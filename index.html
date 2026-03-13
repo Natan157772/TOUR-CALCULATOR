@@ -15,13 +15,6 @@ body{
     background:#0d0d0d;
     color:white;
     padding:15px;
-    animation:fadeSite 1s ease;
-}
-
-/* animação abertura */
-@keyframes fadeSite{
-    from{opacity:0;transform:translateY(20px);}
-    to{opacity:1;transform:translateY(0);}
 }
 
 .logo{
@@ -29,6 +22,7 @@ body{
     font-size:34px;
     font-weight:700;
     color:#ff0000;
+    margin-bottom:5px;
 }
 
 .sub{
@@ -46,12 +40,6 @@ body{
     padding:18px;
     border-radius:12px;
     margin-bottom:20px;
-    animation:boxEnter .7s ease;
-}
-
-@keyframes boxEnter{
-    from{opacity:0;transform:translateY(30px);}
-    to{opacity:1;transform:translateY(0);}
 }
 
 h2{
@@ -70,7 +58,7 @@ label{
     font-size:13px;
 }
 
-.resultado{text-align:center;}
+.resultado{text-align:center;font-size:18px;}
 
 .total{
     font-size:23px;
@@ -85,20 +73,16 @@ button{
     border-radius:8px;
     color:white;
     cursor:pointer;
+    margin-top:10px;
 }
 
 button:hover{opacity:0.8;}
 
 .parceria{color:#00ff88;font-size:13px;margin-top:5px;}
 
-.descontoInput{
-    width:70px;
-    background:#0d0d0d;
-    border:1px solid #444;
-    color:white;
-    padding:4px;
-    border-radius:6px;
-    text-align:center;
+@media(max-width:600px){
+    .logo{font-size:26px;}
+    label{font-size:12px;}
 }
 </style>
 </head>
@@ -111,126 +95,121 @@ button:hover{opacity:0.8;}
 <div class="sub">Calculadora Oficial de Modificações</div>
 
 <div class="box resultado">
-<div>Total:</div>
-<div class="total" id="total">R$ 0,00</div>
-<div>Itens: <span id="itens">0</span></div>
-<div class="parceria" id="infoParceria"></div>
-<button onclick="limpar()">Limpar Tudo</button>
+    <div>Total:</div>
+    <div class="total" id="total">R$ 0,00</div>
+    <div>Itens: <span id="itens">0</span></div>
+    <div class="parceria" id="infoParceria"></div>
+    <button onclick="limpar()">Limpar Tudo</button>
 </div>
 
-<!-- DESCONTO PERSONALIZADO -->
-<div class="box">
-<h2>DESCONTO</h2>
-
-<label>
-<span>
-<input type="checkbox" id="ativarDesconto" onchange="calc()">
-Aplicar desconto personalizado
-</span>
-
-<span>
-<input type="number" id="porcentagem" class="descontoInput"
-value="10" min="0" max="100" oninput="calc()"> %
-</span>
-</label>
-
-</div>
-
-<!-- FULL -->
 <div class="box">
 <h2>FULL TUNING</h2>
-
-<label><span><input type="checkbox" class="full" value="40000" onchange="calc()">Carro com blindagem20%</span><span>R$ 40.000</span></label>
-<label><span><input type="checkbox" class="full" value="65000" onchange="calc()">Carro com blindagem40%</span><span>R$ 65.000</span></label>
-<label><span><input type="checkbox" class="full" value="80000" onchange="calc()">Carro com blindagem60%</span><span>R$ 80.000</span></label>
-<label><span><input type="checkbox" class="full" value="120000" onchange="calc()">Carro com blindagem80%</span><span>R$ 120.000</span></label>
-<label><span><input type="checkbox" class="full" value="150000" onchange="calc()">Carro com blindagem100%</span><span>R$ 150.000</span></label>
+<label><span><input type="checkbox" class="full" value="75000" onchange="calc()">Carro sem blindagem</span><span>R$ 75.000</span></label>
+<label><span><input type="checkbox" class="full" value="85000" onchange="calc()">Carro com blindagem</span><span>R$ 85.000</span></label>
 <label><span><input type="checkbox" class="full" value="60000" onchange="calc()">Moto sem blindagem</span><span>R$ 60.000</span></label>
+<label><span><input type="checkbox" value="2500" onchange="calc()">kit reparo</span><span>R$ 2.500</span></label>
 <label><span><input type="checkbox" class="full" value="79000" onchange="calc()">Moto com blindagem</span><span>R$ 79.000</span></label>
-
-    
-    
-    <!-- motores -->
-<div class="box">
-<h2>motores</h2>
-<label><span><input type="checkbox" class="full" value="20000" onchange="calc()">motorLV1</span><span>R$ 20.000</span></labe
-
-<label><span><input type="checkbox" class="full" value="40000" onchange="calc()">motorLV2</span><span>R$ 40.000</span></labe
-
-<label><span><input type="checkbox" class="full" value="50000" onchange="calc()">motorLV3</span><span>R$ 50.000</span></labe 
-
-<label><span><input type="checkbox" class="full" value="60000" onchange="calc()">motorLV4</span><span>R$ 60.000</span></labe
-
-<label><span><input type="checkbox" class="full" value="70000" onchange="calc()">motorLV4</span><span>R$ 70.000</span></labe  
-                                                                                                                            
-<label><span><input type="checkbox" class="full" value="20000" onchange="calc()">TrasmissaoLV1</span><span>R$ 20.000</span></labe
-
-<label><span><input type="checkbox" class="full" value="35000" onchange="calc()">TrasmissaoLV2</span><span>R$ 35.000</span></labe 
-     
-<label><span><input type="checkbox" class="full" value="45000" onchange="calc()">TrasmissaoLV3</span><span>R$ 45.000</span></labe    
-        
-<label><span><input type="checkbox" class="full" value="60000" onchange="calc()">TrasmissaoLV4</span><span>R$ 60.000</span></labe     
-        
-    
-
-<!--interna -->
-<div class="box">
-<h2>Interna</h2>
- <label><span><input type="checkbox" value="2500" onchange="calc()">Kit reparo</span><span>R$ 2.500</span></label>
-<label><span><input type="checkbox" value="4500" onchange="calc()">Suspensão a ar</span><span>R$ 4.500</span></label>
-<label><span><input type="checkbox" value="2500" onchange="calc()">Nitro</span><span>R$ 2.500</span></label> 
-<label>
-<span><input type="checkbox" id="parceria" onchange="calc()">Aplicar Parceria (20% OFF Full)</span>
-<span style="color:#00ff88;">DESCONTO</span>
-</label>
-    
-<label><span><input type="checkbox" value="3000" onchange="calc()">freioLV1</span><span>R$ 30.000</span></label> 
-    
-<label><span><input type="checkbox" value="4000" onchange="calc()">freioLV2</span><span>R$ 40.000</span></label>
-
-<label><span><input type="checkbox" value="5000" onchange="calc()">freioLV3</span><span>R$ 50.000</span></label>      
+<label><span><input type="checkbox" value="4500" onchange="calc()">Suspençao a ar</span><span>R$ 4.500</span></label>
+<label><span><input type="checkbox" value="2500" onchange="calc()">Nitro</span><span>R$ 2.500</span></label>
+<label><span><input type="checkbox" id="parceria" onchange="calc()">Aplicar Parceria (20% OFF Full)</span><span style="color:#00ff88;">DESCONTO</span></label>
 </div>
 
-<!-- EXTERIOR -->
 <div class="box">
 <h2>EXTERIOR</h2>
-
 <label><span><input type="checkbox" value="7500" onchange="calc()">Aerofólio</span><span>R$ 7.500</span></label>
 <label><span><input type="checkbox" value="6000" onchange="calc()">Parachoque Dianteiro</span><span>R$ 6.000</span></label>
 <label><span><input type="checkbox" value="6000" onchange="calc()">Parachoque Traseiro</span><span>R$ 6.000</span></label>
 <label><span><input type="checkbox" value="5000" onchange="calc()">Saia</span><span>R$ 5.000</span></label>
 <label><span><input type="checkbox" value="4500" onchange="calc()">Escapamento</span><span>R$ 4.500</span></label>
-<label><span><input type="checkbox" class="full" value="20000" onchange="calc()">suspensao  mx</span><span>R$ 35.000</span></labe 
+
 <label><span><input type="checkbox" value="5500" onchange="calc()">Chassi</span><span>R$ 5.500</span></label>
 <label><span><input type="checkbox" value="4000" onchange="calc()">Grelha</span><span>R$ 4.000</span></label>
 <label><span><input type="checkbox" value="6500" onchange="calc()">Capô</span><span>R$ 6.500</span></label>
 <label><span><input type="checkbox" value="4500" onchange="calc()">Para-lama</span><span>R$ 4.500</span></label>
 <label><span><input type="checkbox" value="7000" onchange="calc()">Teto</span><span>R$ 7.000</span></label>
 <label><span><input type="checkbox" value="3000" onchange="calc()">Placa</span><span>R$ 3.000</span></label>
-
 </div>
 
-<!-- ESTÉTICA -->
+<div class="box">
+<h2>INTERIOR</h2>
+<label><span><input type="checkbox" value="2500" onchange="calc()">Buzina</span><span>R$ 2.500</span></label>
+<label><span><input type="checkbox" value="9000" onchange="calc()">Blindagem</span><span>R$ 9.000</span></label>
+<label><span><input type="checkbox" value="6000" onchange="calc()">Interior</span><span>R$ 6.000</span></label>
+
+<label><span><input type="checkbox" value="3500" onchange="calc()">Vidro</span><span>R$ 3.500</span></label>
+</div>
+
+<div class="box">
+<h2>ILUMINAÇÃO</h2>
+<label><span><input type="checkbox" value="7500" onchange="calc()">Farol</span><span>R$ 7.500</span></label>
+<label><span><input type="checkbox" value="2500" onchange="calc()">Neon</span><span>R$ 2.500</span></label>
+</div>
+
 <div class="box">
 <h2>ESTÉTICA</h2>
+<label><span><input type="checkbox" value="75000" onchange="calc()">Decal</span><span>R$ 7.500</span></label>
+<label><span><input type="checkbox" value="15000" onchange="calc()">Rodas</span><span>R$ 7.500</span></label>
+</div>
 
-<label><span><input type="checkbox" value="7500" onchange="calc()">Decal</span><span>R$ 7.500</span></label>
-<label><span><input type="checkbox" value="7500" onchange="calc()">Rodas</span><span>R$ 7.500</span></label>
-    <label><span><input type="checkbox" value="9500" onchange="calc()">Cromado</span><span>R$ 9.500</span></label>
-    <label><span><input type="checkbox" value="8000" onchange="calc()">Metalica</span><span>R$ 8.000</span></label>
-    <label><span><input type="checkbox" value="6500" onchange="calc()">Metal</span><span>R$ 6.500</span></label>
-    <label><span><input type="checkbox" value="7500" onchange="calc()">Fosco</span><span>R$ 7.500</span></label>
-
+<div class="box">
+<h2>PINTURA</h2>
+<label><span><input type="checkbox" value="8000" onchange="calc()">Cromado</span><span>R$ 8.000</span></label>
+<label><span><input type="checkbox" value="4000" onchange="calc()">Fosca</span><span>R$ 4.000</span></label>
+<label><span><input type="checkbox" value="4000" onchange="calc()">Metálica</span><span>R$ 4.000</span></label>
+<label><span><input type="checkbox" value="4000" onchange="calc()">Metal</span><span>R$ 4.000</span></label>
 </div>
 
 </div>
 
 <script>
 function calc(){
+    let total = 0;
+    let itens = 0;
+    let fullTotal = 0;
 
-let total=0;
-let itens=0;
-let fullTotal=0;
+    document.querySelectorAll("input[type=checkbox]").forEach(el=>{
+        if(el.checked && el.id !== "parceria"){
+            let v = parseFloat(el.value || 0);
+            total += v;
+            itens++;
+            if(el.classList.contains("full")){
+                fullTotal += v;
+            }
+        }
+    });
+
+    let parceria = document.getElementById("parceria");
+    let info = document.getElementById("infoParceria");
+
+    if(parceria.checked && fullTotal > 0){
+        let desconto = fullTotal * 0.20;
+        total -= desconto;
+        info.innerText = "Parceria aplicada (-20% Full Tuning)";
+    }else{
+        info.innerText = "";
+    }
+
+    document.getElementById("total").innerText =
+        "R$ " + total.toLocaleString("pt-BR");
+    document.getElementById("itens").innerText = itens;
+}
+
+function limpar(){
+    document.querySelectorAll("input[type=checkbox]").forEach(c=>c.checked=false);
+    document.getElementById("total").innerText="R$ 0,00";
+    document.getElementById("itens").innerText="0";
+    document.getElementById("infoParceria").innerText="";
+}
+</script>
+
+</body>
+
+</html><script>
+function calc(){
+
+let total = 0;
+let itens = 0;
+let fullTotal = 0;
 
 document.querySelectorAll("input[type=checkbox]").forEach(el=>{
 if(el.checked && el.id!=="ativarDesconto" && el.id!=="parceria"){
@@ -244,28 +223,37 @@ fullTotal+=v;
 }
 });
 
-/* parceria */
-if(document.getElementById("parceria").checked && fullTotal>0){
-let descontoFull=fullTotal*0.20;
-total-=descontoFull;
+let parceria = document.getElementById("parceria").checked;
+let descontoAtivo = document.getElementById("ativarDesconto").checked;
+let porcentagem = parseFloat(document.getElementById("porcentagem").value || 0);
+let info = document.getElementById("infoParceria");
+
+/* PRIORIDADE PARCERIA */
+if(parceria && fullTotal>0){
+
+let desconto = fullTotal * 0.20;
+total -= desconto;
+info.innerText = "Parceria aplicada (-20% Full Tuning)";
+
 }
 
-/* desconto personalizado */
-let ativado=document.getElementById("ativarDesconto").checked;
-let porcentagem=parseFloat(document.getElementById("porcentagem").value||0);
+/* DESCONTO PERSONALIZADO */
+else if(descontoAtivo && porcentagem>0){
 
-if(ativado && porcentagem>0){
-total-= total*(porcentagem/100);
-document.getElementById("infoParceria").innerText=
-`Desconto aplicado (-${porcentagem}%)`;
-}else{
-document.getElementById("infoParceria").innerText="";
+let desconto = total * (porcentagem/100);
+total -= desconto;
+info.innerText = `Desconto aplicado (-${porcentagem}%)`;
+
 }
 
-document.getElementById("total").innerText=
-"R$ "+total.toLocaleString("pt-BR");
+else{
+info.innerText="";
+}
 
-document.getElementById("itens").innerText=itens;
+document.getElementById("total").innerText =
+"R$ " + total.toLocaleString("pt-BR");
+
+document.getElementById("itens").innerText = itens;
 }
 
 function limpar(){
@@ -276,5 +264,5 @@ document.getElementById("infoParceria").innerText="";
 }
 </script>
 
-</body>
-</html>
+
+
