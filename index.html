@@ -101,7 +101,41 @@ button:hover{opacity:0.8;}
     <div class="parceria" id="infoParceria"></div>
     <button onclick="limpar()">Limpar Tudo</button>
 </div>
+<div class="box">
+<h2>DESCONTO</h2>
 
+<label>
+<span>
+<input type="checkbox" id="ativarDesconto" onchange="calc()">
+Aplicar desconto
+</span>
+
+<span>
+<input type="number" id="porcentagem" value="10" min="0" max="100"
+style="width:60px;background:#0d0d0d;border:1px solid #444;color:white;border-radius:5px;text-align:center;"
+oninput="calc()"> %
+</span>
+
+</label>
+<div class="box">
+<h2>DESCONTO</h2>
+
+<label>
+<span>
+<input type="checkbox" id="ativarDesconto" onchange="calc()">
+Aplicar desconto
+</span>
+
+<span>
+<input type="number" id="porcentagem" value="10" min="0" max="100"
+style="width:60px;background:#0d0d0d;border:1px solid #444;color:white;border-radius:5px;text-align:center;"
+oninput="calc()"> %
+</span>
+
+</label>
+
+</div>
+</div>
 <div class="box">
 <h2>FULL TUNING</h2>
 <label><span><input type="checkbox" class="full" value="75000" onchange="calc()">Carro sem blindagem</span><span>R$ 75.000</span></label>
