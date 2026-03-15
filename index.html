@@ -250,7 +250,71 @@ function limpar(){
     document.getElementById("infoParceria").innerText="";
 }
 </script>
+let ranking = {}
 
+function gerarOS(){
+
+let cliente = document.getElementById("cliente").value
+let veiculo = document.getElementById("veiculo").value
+let mecanico = document.getElementById("mecanico").value
+let total = document.getElementById("total").innerText
+
+if(!cliente || !veiculo || !mecanico){
+alert("Preencha cliente, veículo e mecânico")
+return
+}
+
+let os = `
+Cliente: ${cliente}
+Veículo: ${veiculo}
+Mecânico: ${mecanico}
+${total}
+`
+
+let historico = document.getElementById("historico")
+
+historico.innerHTML =
+"<p>"+os.replace(/\n/g,"<br>")+"</p>" + historico.innerHTML
+
+if(!ranking[mecanico]) ranking[mecanico]=0
+ranking[mecanico]++
+
+mostrarRanking()
+
+}
+
+function copiarDiscord(){
+liente = document.getElementById("cliente").value
+let vei
+let cculo = document.getElementById("veiculo").value
+let total = document.getElementById("total").innerText
+
+let texto = `📋 ORÇAMENTO MECÂNICA TOUR
+
+Cliente: ${cliente}
+Veículo: ${veiculo}
+
+${total}`
+
+navigator.clipboard.writeText(texto)
+
+alert("Orçamento copiado para enviar no Discord")
+
+}
+
+function mostrarRanking(){
+
+let area = document.getElementById("ranking")
+
+area.innerHTML=""
+
+for(let m in ranking){
+
+area.innerHTML += m + " - " + ranking[m] + " serviços<br>"
+
+}
+
+}
 </body>
 
 </html><script>
@@ -322,68 +386,3 @@ document.getElementById("infoParceria").innerText="";
 <h2>Ranking Mecânicos</h2>
 <div id="ranking"></div>
 </div>
-let ranking = {}
-
-function gerarOS(){
-
-let cliente = document.getElementById("cliente").value
-let veiculo = document.getElementById("veiculo").value
-let mecanico = document.getElementById("mecanico").value
-let total = document.getElementById("total").innerText
-
-if(!cliente || !veiculo || !mecanico){
-alert("Preencha cliente, veículo e mecânico")
-return
-}
-
-let os = `
-Cliente: ${cliente}
-Veículo: ${veiculo}
-Mecânico: ${mecanico}
-${total}
-`
-
-let historico = document.getElementById("historico")
-
-historico.innerHTML =
-"<p>"+os.replace(/\n/g,"<br>")+"</p>" + historico.innerHTML
-
-if(!ranking[mecanico]) ranking[mecanico]=0
-ranking[mecanico]++
-
-mostrarRanking()
-
-}
-
-function copiarDiscord(){
-
-let cliente = document.getElementById("cliente").value
-let veiculo = document.getElementById("veiculo").value
-let total = document.getElementById("total").innerText
-
-let texto = `📋 ORÇAMENTO MECÂNICA TOUR
-
-Cliente: ${cliente}
-Veículo: ${veiculo}
-
-${total}`
-
-navigator.clipboard.writeText(texto)
-
-alert("Orçamento copiado para enviar no Discord")
-
-}
-
-function mostrarRanking(){
-
-let area = document.getElementById("ranking")
-
-area.innerHTML=""
-
-for(let m in ranking){
-
-area.innerHTML += m + " - " + ranking[m] + " serviços<br>"
-
-}
-
-}
