@@ -4,16 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tour Customs</title>
-<div class="box">
 
-<h2>CLIENTE</h2>
-
-<input id="cliente" placeholder="Nome do Cliente"
-style="width:100%;padding:8px;background:#0d0d0d;border:1px solid #444;color:white;border-radius:5px;">
-
-</div>
-<input id="veiculo" placeholder="Veículo"
-style="width:100%;padding:8px;background:#0d0d0d;border:1px solid #444;color:white;border-radius:5px;margin-top:5px;">
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
 
 <style>
@@ -298,21 +289,6 @@ document.getElementById("itens").innerText="0";
 document.getElementById("infoParceria").innerText="";
 }
 </script>
-<function gerarOS(){
-
-let cliente = document.getElementById("cliente").value
-let veiculo = document.getElementById("veiculo").value
-let total = document.getElementById("total").innerText
-
-let os =
-"📄 ORDEM DE SERVIÇO\n\n"+
-"Cliente: "+cliente+"\n"+
-"Veículo: "+veiculo+"\n"+
-"Valor: "+total
-
-alert<(os)
-
-}<button onclick="gerarOS()">Gerar OS</button>
 
 
 
