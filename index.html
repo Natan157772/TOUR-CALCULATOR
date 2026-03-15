@@ -348,8 +348,8 @@ function gerarOS(){
 
 let cliente = document.getElementById("cliente").value;
 let veiculo = document.getElementById("veiculo").value;
-let mecanico = document.getElementById("mecanico").value;
 let total = document.getElementById("total").innerText;
+let mecanico = document.getElementById("mecanico").value;
 
 let os =
 "📄 **ORDEM DE SERVIÇO - TOUR CUSTOMS**\n\n"+
@@ -358,24 +358,9 @@ let os =
 "🧑‍🔧 Mecânico: "+mecanico+"\n"+
 "💰 Valor: "+total;
 
-// salva histórico
 salvarHistorico(os);
-
-// atualiza ranking
 atualizarRanking(mecanico);
 
-// envia pro Discord
-fetch(WEBHOOK,{
-method:"POST",
-headers:{"Content-Type":"application/json"},
-body:JSON.stringify({
-content: os
-})
-});
-
-alert("✅ OS enviada para o Discord!");
-
-}
 fetch(WEBHOOK,{
 method:"POST",
 headers:{"Content-Type":"application/json"},
@@ -423,4 +408,4 @@ window.onload = mostrarHistorico
 </script>
 
 </body>
-</html>
+</html> ta certo
