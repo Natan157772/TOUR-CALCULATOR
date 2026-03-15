@@ -66,46 +66,6 @@ button:hover{opacity:0.8;}
 </style>
 
 </head>
-<!-- 🔒 TELA DE LOGIN -->
-<div id="loginTela" style="
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:#000;
-display:flex;
-justify-content:center;
-align-items:center;
-z-index:9999;">
-
-<div style="
-background:#111;
-padding:30px;
-border-radius:12px;
-border:1px solid #333;
-text-align:center;
-width:300px;">
-
-<h2 style="color:#ff0000;margin-bottom:15px;">TOUR CUSTOMS</h2>
-
-<input id="loginUser" placeholder="Login"
-style="width:100%;padding:8px;margin-bottom:10px;background:#0d0d0d;border:1px solid #444;color:white;border-radius:5px;">
-
-<input id="loginSenha" type="password" placeholder="Senha"
-style="width:100%;padding:8px;margin-bottom:15px;background:#0d0d0d;border:1px solid #444;color:white;border-radius:5px;">
-
-<button onclick="fazerLogin()">Entrar</button>
-
-<div id="loginErro" style="color:red;font-size:12px;margin-top:10px;"></div>
-
-</div>
-</div>
-<body>
-
-</style>
-
-</head>
 
 <body>
 
@@ -144,11 +104,19 @@ style="width:100%;padding:8px;margin-bottom:15px;background:#0d0d0d;border:1px s
 
 </div>
 </div>
+
 
 <div class="container">
-<script>
 
-... SEU SISTEMA NORMAL ...
+<div class="logo">TOUR CUSTOMS</div>
+<div class="sub">Calculadora Oficial de Modificações</div>
+
+<!-- AQUI CONTINUA TODO SEU HTML NORMAL DA CALCULADORA -->
+
+</div>
+
+
+<script>
 
 /* =========================
    🔒 SISTEMA DE LOGIN
@@ -163,8 +131,10 @@ let user = document.getElementById("loginUser").value
 let senha = document.getElementById("loginSenha").value
 
 if(user === LOGIN_CORRETO && senha === SENHA_CORRETA){
+
 sessionStorage.setItem("logado","true")
 document.getElementById("loginTela").style.display="none"
+
 }else{
 document.getElementById("loginErro").innerText="Login ou senha incorretos"
 }
@@ -182,7 +152,6 @@ document.getElementById("loginTela").style.display="flex"
 })
 
 </script>
-<div class="logo">TOUR CUSTOMS</div>
-<div class="sub">Calculadora Oficial de Modificações</div>
 
-<!-- ======= TODO SEU HTML CONTINUA IGUAL ======= --> 
+</body>
+</html>
