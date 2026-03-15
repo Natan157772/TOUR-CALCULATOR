@@ -5,8 +5,7 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<const WEBHOOK = "https://discord.com/api/webhooks/1482806727991623771/dOor1_q1CaregAJ9olakRPfdxgVgrApHxWukDsy0Kuf3-tS_y1z83bc18Hm5EmZtbkiK";>
-  
+
 <title>Tour Customs</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
@@ -197,50 +196,6 @@ oninput="calc()">
 
 </div>
 
-<div class="box">
-<h2>EXTERIOR</h2>
-<label><span><input type="checkbox" value="7500" onchange="calc()">Aerofólio</span><span>R$ 7.500</span></label>
-<label><span><input type="checkbox" value="6000" onchange="calc()">Parachoque Dianteiro</span><span>R$ 6.000</span></label>
-<label><span><input type="checkbox" value="6000" onchange="calc()">Parachoque Traseiro</span><span>R$ 6.000</span></label>
-<label><span><input type="checkbox" value="5000" onchange="calc()">Saia</span><span>R$ 5.000</span></label>
-<label><span><input type="checkbox" value="4500" onchange="calc()">Escapamento</span><span>R$ 4.500</span></label>
-
-<label><span><input type="checkbox" value="5500" onchange="calc()">Chassi</span><span>R$ 5.500</span></label>
-<label><span><input type="checkbox" value="4000" onchange="calc()">Grelha</span><span>R$ 4.000</span></label>
-<label><span><input type="checkbox" value="6500" onchange="calc()">Capô</span><span>R$ 6.500</span></label>
-<label><span><input type="checkbox" value="4500" onchange="calc()">Para-lama</span><span>R$ 4.500</span></label>
-<label><span><input type="checkbox" value="7000" onchange="calc()">Teto</span><span>R$ 7.000</span></label>
-<label><span><input type="checkbox" value="3000" onchange="calc()">Placa</span><span>R$ 3.000</span></label>
-</div>
-
-<div class="box">
-<h2>INTERIOR</h2>
-<label><span><input type="checkbox" value="2500" onchange="calc()">Buzina</span><span>R$ 2.500</span></label>
-<label><span><input type="checkbox" value="9000" onchange="calc()">Blindagem</span><span>R$ 9.000</span></label>
-<label><span><input type="checkbox" value="6000" onchange="calc()">Interior</span><span>R$ 6.000</span></label>
-
-<label><span><input type="checkbox" value="3500" onchange="calc()">Vidro</span><span>R$ 3.500</span></label>
-</div>
-
-<div class="box">
-<h2>ILUMINAÇÃO</h2>
-<label><span><input type="checkbox" value="7500" onchange="calc()">Farol</span><span>R$ 7.500</span></label>
-<label><span><input type="checkbox" value="2500" onchange="calc()">Neon</span><span>R$ 2.500</span></label>
-</div>
-
-<div class="box">
-<h2>ESTÉTICA</h2>
-<label><span><input type="checkbox" value="75000" onchange="calc()">Decal</span><span>R$ 7.500</span></label>
-<label><span><input type="checkbox" value="15000" onchange="calc()">Rodas</span><span>R$ 7.500</span></label>
-</div>
-
-<div class="box">
-<h2>PINTURA</h2>
-<label><span><input type="checkbox" value="8000" onchange="calc()">Cromado</span><span>R$ 8.000</span></label>
-<label><span><input type="checkbox" value="4000" onchange="calc()">Fosca</span><span>R$ 4.000</span></label>
-<label><span><input type="checkbox" value="4000" onchange="calc()">Metálica</span><span>R$ 4.000</span></label>
-<label><span><input type="checkbox" value="4000" onchange="calc()">Metal</span><span>R$ 4.000</span></label>
-</div>
 
 <div class="box">
 
@@ -344,33 +299,18 @@ alert("Orçamento copiado!")
 
 }
 
+
 function gerarOS(){
 
-let cliente = document.getElementById("cliente").value;
-let veiculo = document.getElementById("veiculo").value;
-let total = document.getElementById("total").innerText;
-let mecanico = document.getElementById("mecanico").value;
+let cliente = document.getElementById("cliente").value
+let veiculo = document.getElementById("veiculo").value
+let total = document.getElementById("total").innerText
 
 let os =
-"📄 **ORDEM DE SERVIÇO - TOUR CUSTOMS**\n\n"+
-"👤 Cliente: "+cliente+"\n"+
-"🚗 Veículo: "+veiculo+"\n"+
-"🧑‍🔧 Mecânico: "+mecanico+"\n"+
-"💰 Valor: "+total;
-
-salvarHistorico(os);
-atualizarRanking(mecanico);
-
-fetch(WEBHOOK,{
-method:"POST",
-headers:{"Content-Type":"application/json"},
-body:JSON.stringify({
-content: os
-})
-});
-
-alert("OS enviada para o Discord!");
-}
+"📄 ORDEM DE SERVIÇO\n\n"+
+"Cliente: "+cliente+"\n"+
+"Veículo: "+veiculo+"\n"+
+"Valor: "+total
 
 salvarHistorico(os)
 
