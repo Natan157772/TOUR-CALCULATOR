@@ -228,8 +228,8 @@ oninput="calc()">
 
 <div class="box">
 <h2>ESTÉTICA</h2>
-<label><span><input type="checkbox" value="75000" onchange="calc()">Decal</span><span>R$ 7.500</span></label>
-<label><span><input type="checkbox" value="15000" onchange="calc()">Rodas</span><span>R$ 7.500</span></label>
+<label><span><input type="checkbox" value="7500" onchange="calc()">Decal</span><span>R$ 7.500</span></label>
+<label><span><input type="checkbox" value="7500" onchange="calc()">Rodas</span><span>R$ 7.500</span></label>
 </div>
 
 <div class="box">
@@ -350,15 +350,21 @@ let cliente = document.getElementById("cliente").value
 let veiculo = document.getElementById("veiculo").value
 let total = document.getElementById("total").innerText
 
+if(!cliente || !veiculo){
+alert("Preencha nome e veículo!")
+return
+}
+
 let os =
-"📄 **ORDEM DE SERVIÇO - TOUR CUSTOMS**\n\n"+
+"📄 ORDEM DE SERVIÇO - TOUR CUSTOMS\n\n"+
 "👤 Cliente: "+cliente+"\n"+
 "🚗 Veículo: "+veiculo+"\n"+
 "💰 Valor: "+total
 
-// salva histórico
+// salvar histórico
 salvarHistorico(os)
 
+// enviar para o Discord
 fetch(WEBHOOK,{
 method:"POST",
 headers:{
@@ -368,21 +374,19 @@ body: JSON.stringify({
 content: os
 })
 })
-.then(()=>{
+.then(response=>{
+if(response.ok){
 alert("✅ OS enviada para o Discord!")
+}else{
+alert("❌ Erro ao enviar. Verifique o webhook.")
+}
 })
-.catch(()=>{
-alert("❌ Erro ao enviar para Discord")
+.catch(error=>{
+console.error(error)
+alert("❌ Ero de conexão com Discord")
 })
 
 }
-})
-
-}
-
-
-}
-
 
 function salvarHistorico(texto){
 
