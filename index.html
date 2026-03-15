@@ -4,17 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tour Customs</title>
-<script>
 
-let ranking = JSON.parse(localStorage.getItem("ranking")) || {}
-let historicoOS = JSON.parse(localStorage.getItem("historicoOS")) || []
-let caixa = JSON.parse(localStorage.getItem("caixa")) || 0
-
-function salvarDados(){
-localStorage.setItem("ranking", JSON.stringify(ranking))
-localStorage.setItem("historicoOS", JSON.stringify(historicoOS))
-localStorage.setItem("caixa", JSON.stringify(caixa))
-}
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
 
 <style>
@@ -300,5 +290,11 @@ document.getElementById("infoParceria").innerText="";
 }
 </script>
 
+<div class="box">
 
+<h2>CAIXA DA OFICINA</h2>
+
+<div id="caixaTotal">R$ 0</div>
+
+</div>
 
