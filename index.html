@@ -458,7 +458,15 @@ area.innerHTML+="<pre>"+os+"</pre>"
 })
 
 }
+function salvarHistorico(os){
 
+historico.push(os)
+
+localStorage.setItem("historico", JSON.stringify(historico))
+
+mostrarHistorico()
+
+}
 </script>
 
 </body>
