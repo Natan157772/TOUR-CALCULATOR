@@ -417,4 +417,118 @@ window.onload = mostrarHistorico
 </script>
 
 </body>
+  <script>
+
+/* =========================
+   🔒 LOGIN PRO TOUR CUSTOMS
+========================= */
+
+const LOGIN_CORRETO = "Mecanico"
+const SENHA_CORRETA = "1234"
+
+function fazerLogin(){
+
+let user = document.getElementById("loginUser").value
+let senha = document.getElementById("loginSenha").value
+
+if(user === LOGIN_CORRETO && senha === SENHA_CORRETA){
+
+sessionStorage.setItem("logado","true")
+sessionStorage.setItem("mecanico",user)
+
+document.getElementById("loginTela").style.display="none"
+mostrarMecanico()
+
+}else{
+document.getElementById("loginErro").innerText="Login ou senha incorretos"
+}
+
+}
+
+/* ENTER FAZ LOGIN */
+document.addEventListener("keypress",(e)=>{
+if(e.key==="Enter"){
+fazerLogin()
+}
+})
+
+/* VERIFICA LOGIN */
+window.addEventListener("load",()=>{
+
+if(sessionStorage.getItem("logado")==="true"){
+document.getElementById("loginTela").style.display="none"
+mostrarMecanico()
+}else{
+document.getElementById("loginTela").style.display="flex"
+}
+
+})
+
+/* MOSTRAR MECÂNICO */
+function mostrarMecanico(){
+
+let nome = sessionStorage.getItem("mecanico")
+
+let topo = document.createElement("div")
+topo.id="painelMecanico"
+topo.style=`
+position:fixed;
+top:10px;
+right:10px;
+background:#111;
+padding:10px 15px;
+border:1px solid #333;
+border-radius:8px;
+font-size:13px;
+z-index:999;
+`
+
+topo.innerHTML=`
+👤 Mecânico: ${nome}
+<br>
+<button onclick="logout()" style="
+margin-top:5px;
+background:#ff0000;
+border:none;
+padding:5px 10px;
+color:white;
+border-radius:5px;
+cursor:pointer;">
+Sair
+</button>
+`
+
+document.body.appendChild(topo)
+}
+
+/* LOGOUT */
+function logout(){
+sessionStorage.clear()
+location.reload()
+}
+
+/* =========================
+   📄 GERAR ORDEM DE SERVIÇO
+========================= */
+
+function gerarOS(){
+
+let total = document.querySelector(".total")?.innerText || "0"
+
+let mecanico = sessionStorage.getItem("mecanico")
+
+let texto =
+`===== TOUR CUSTOMS =====
+Mecânico: ${mecanico}
+
+Valor Total: ${total}
+
+========================`
+
+navigator.clipboard.writeText(texto)
+
+alert("OS copiada!")
+}
+
+</script>
 </html>
