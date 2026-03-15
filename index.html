@@ -298,3 +298,11 @@ document.getElementById("infoParceria").innerText="";
 
 </div>
 
+let valorNumero = parseInt(total.replace(/\D/g,''))
+
+caixa += valorNumero
+
+document.getElementById("caixaTotal").innerText =
+"R$ " + caixa.toLocaleString('pt-BR')
+
+salvarDados()
