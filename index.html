@@ -344,7 +344,6 @@ alert("Orçamento copiado!")
 
 }
 
-
 function gerarOS(){
 
 let cliente = document.getElementById("cliente").value
@@ -358,20 +357,6 @@ let os =
 "💰 Valor: "+total
 
 // salva histórico
-salvarHistorico(os)
-
-function gerarOS(){
-
-let cliente = document.getElementById("cliente").value
-let veiculo = document.getElementById("veiculo").value
-let total = document.getElementById("total").innerText
-
-let os =
-"📄 **ORDEM DE SERVIÇO - TOUR CUSTOMS**\n\n"+
-"👤 Cliente: "+cliente+"\n"+
-"🚗 Veículo: "+veiculo+"\n"+
-"💰 Valor: "+total
-
 salvarHistorico(os)
 
 fetch(WEBHOOK,{
@@ -388,6 +373,9 @@ alert("✅ OS enviada para o Discord!")
 })
 .catch(()=>{
 alert("❌ Erro ao enviar para Discord")
+})
+
+}
 })
 
 }
