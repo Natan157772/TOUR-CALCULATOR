@@ -5,7 +5,8 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<const WEBHOOK = "https://discord.com/api/webhooks/1482806727991623771/dOor1_q1CaregAJ9olakRPfdxgVgrApHxWukDsy0Kuf3-tS_y1z83bc18Hm5EmZtbkiK";>
+  
 <title>Tour Customs</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
@@ -343,18 +344,48 @@ alert("Orçamento copiado!")
 
 }
 
-
 function gerarOS(){
 
-let cliente = document.getElementById("cliente").value
-let veiculo = document.getElementById("veiculo").value
-let total = document.getElementById("total").innerText
+let cliente = document.getElementById("cliente").value;
+let veiculo = document.getElementById("veiculo").value;
+let mecanico = document.getElementById("mecanico").value;
+let total = document.getElementById("total").innerText;
 
 let os =
-"📄 ORDEM DE SERVIÇO\n\n"+
-"Cliente: "+cliente+"\n"+
-"Veículo: "+veiculo+"\n"+
-"Valor: "+total
+"📄 **ORDEM DE SERVIÇO - TOUR CUSTOMS**\n\n"+
+"👤 Cliente: "+cliente+"\n"+
+"🚗 Veículo: "+veiculo+"\n"+
+"🧑‍🔧 Mecânico: "+mecanico+"\n"+
+"💰 Valor: "+total;
+
+// salva histórico
+salvarHistorico(os);
+
+// atualiza ranking
+atualizarRanking(mecanico);
+
+// envia pro Discord
+fetch(WEBHOOK,{
+method:"POST",
+headers:{"Content-Type":"application/json"},
+body:JSON.stringify({
+content: os
+})
+});
+
+alert("✅ OS enviada para o Discord!");
+
+}
+fetch(WEBHOOK,{
+method:"POST",
+headers:{"Content-Type":"application/json"},
+body:JSON.stringify({
+content: os
+})
+});
+
+alert("OS enviada para o Discord!");
+}
 
 salvarHistorico(os)
 
