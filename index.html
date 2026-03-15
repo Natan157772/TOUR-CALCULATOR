@@ -107,7 +107,30 @@ margin-top:5px;
 </style>
 
 </head>
+<script>
 
+const usuarioCorreto = "Mecanico"
+const senhaCorreta = "4321"
+
+function login(){
+
+let user = document.getElementById("user").value
+let pass = document.getElementById("pass").value
+
+if(user === usuarioCorreto && pass === senhaCorreta){
+
+localStorage.setItem("logado","sim")
+
+document.getElementById("loginTela").style.display="none"
+document.getElementById("site").style.display="block"
+
+}else{
+document.getElementById("erroLogin").innerText="Usuário ou senha incorreto"
+}
+
+}
+
+</script>
 <body>
 
 <!-- LOGIN -->
@@ -140,8 +163,7 @@ style="width:100%;padding:8px;margin-bottom:10px;background:#0d0d0d;border:1px s
 
 <input id="pass" type="password" placeholder="Senha"
 style="width:100%;padding:8px;margin-bottom:15px;background:#0d0d0d;border:1px solid #444;color:white;border-radius:5px;">
-<const usuarioCorreto = "Mecanico"
-const senhaCorreta = "4321">
+
 <button onclick="login()">Entrar</button>
 
 <div id="erroLogin" style="color:red;margin-top:10px;"></div>
