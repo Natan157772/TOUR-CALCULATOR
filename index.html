@@ -121,135 +121,39 @@ button:hover{opacity:0.8;}
 <body>
 
 <div class="container">
+  <div class="box">
 
-<div class="logo">TOUR CUSTOMS</div>
-<div class="sub">Calculadora Oficial de Modificações</div>
+<h2>ORDEM DE SERVIÇO</h2>
 
-<div class="box resultado">
-    <div>Total:</div>
-    <div class="total" id="total">R$ 0,00</div>
-    <div>Itens: <span id="itens">0</span></div>
-    <div class="parceria" id="infoParceria"></div>
-    <button onclick="limpar()">Limpar Tudo</button>
-</div>
-<div class="box">
-<h2>DESCONTO</h2>
+<input id="cliente" placeholder="Nome do cliente"
+style="width:100%;padding:8px;margin-bottom:8px;background:#0d0d0d;border:1px solid #444;color:white;border-radius:5px;">
 
-<label>
-<span>
-<input type="checkbox" id="ativarDesconto" onchange="calc()">
-Aplicar desconto
-</span>
+<input id="veiculo" placeholder="Veículo"
+style="width:100%;padding:8px;margin-bottom:8px;background:#0d0d0d;border:1px solid #444;color:white;border-radius:5px;">
 
-<span>
-<input type="number" id="porcentagem" value="10" min="0" max="100"
-style="width:60px;background:#0d0d0d;border:1px solid #444;color:white;border-radius:5px;text-align:center;"
-oninput="calc()"> %
-</span>
+<select id="mecanico"
+style="width:100%;padding:8px;background:#0d0d0d;border:1px solid #444;color:white;border-radius:5px;">
 
-</div>
-    
-</div>
-<div class="box">
-<h2>FULL TUNING</h2>
-<label><span><input type="checkbox" class="full" value="75000" onchange="calc()">Carro sem blindagem</span><span>R$ 75.000</span></label>
-<label><span><input type="checkbox" class="full" value="15000" onchange="calc()">Carro com blindagem</span><span>R$ 150.000</span></label>
-<label><span><input type="checkbox" class="full" value="60000" onchange="calc()">Moto sem blindagem</span><span>R$ 60.000</span></label>
-<label><span><input type="checkbox" class="full" value="95000" onchange="calc()">Moto com blindagem</span><span>R$ 95.000</span></label    
-<label><span><input type="checkbox" value="2500" onchange="calc()">kit reparo</span><span>R$ 2.500</span></label>
-<label><span><input type="checkbox" class="full" value="79000" onchange="calc()">Moto com blindagem</span><span>R$ 79.000</span></label>
-<label><span><input type="checkbox" value="4500" onchange="calc()">Suspençao a ar</span><span>R$ 4.500</span></label>
-<label><span><input type="checkbox" value="2500" onchange="calc()">Nitro</span><span>R$ 2.500</span></label>
-<label><span><input type="checkbox" id="parceria" onchange="calc()">Aplicar Parceria (20% OFF Full)</span><span style="color:#00ff88;">DESCONTO</span></label>
+<option value="">Selecionar mecânico</option>
+<option>João</option>
+<option>Carlos</option>
+<option>Pedro</option>
+
+</select>
+
+<button onclick="gerarOS()">Gerar OS</button>
+<button onclick="copiarDiscord()">Copiar Orçamento</button>
+
+</div>  
+    <div class="box">
+<h2>Histórico de OS</h2>
+<div id="historico"></div>
 </div>
 
 <div class="box">
-<h2>EXTERIOR</h2>
-<label><span><input type="checkbox" value="7500" onchange="calc()">Aerofólio</span><span>R$ 7.500</span></label>
-<label><span><input type="checkbox" value="6000" onchange="calc()">Parachoque Dianteiro</span><span>R$ 6.000</span></label>
-<label><span><input type="checkbox" value="6000" onchange="calc()">Parachoque Traseiro</span><span>R$ 6.000</span></label>
-<label><span><input type="checkbox" value="5000" onchange="calc()">Saia</span><span>R$ 5.000</span></label>
-<label><span><input type="checkbox" value="4500" onchange="calc()">Escapamento</span><span>R$ 4.500</span></label>
-
-<label><span><input type="checkbox" value="5500" onchange="calc()">Chassi</span><span>R$ 5.500</span></label>
-<label><span><input type="checkbox" value="4000" onchange="calc()">Grelha</span><span>R$ 4.000</span></label>
-<label><span><input type="checkbox" value="6500" onchange="calc()">Capô</span><span>R$ 6.500</span></label>
-<label><span><input type="checkbox" value="4500" onchange="calc()">Para-lama</span><span>R$ 4.500</span></label>
-<label><span><input type="checkbox" value="7000" onchange="calc()">Teto</span><span>R$ 7.000</span></label>
-<label><span><input type="checkbox" value="3000" onchange="calc()">Placa</span><span>R$ 3.000</span></label>
+<h2>Ranking Mecânicos</h2>
+<div id="ranking"></div>
 </div>
-
-<div class="box">
-<h2>INTERIOR</h2>
-<label><span><input type="checkbox" value="2500" onchange="calc()">Buzina</span><span>R$ 2.500</span></label>
-<label><span><input type="checkbox" value="9000" onchange="calc()">Blindagem</span><span>R$ 9.000</span></label>
-<label><span><input type="checkbox" value="6000" onchange="calc()">Interior</span><span>R$ 6.000</span></label>
-
-<label><span><input type="checkbox" value="3500" onchange="calc()">Vidro</span><span>R$ 3.500</span></label>
-</div>
-
-<div class="box">
-<h2>ILUMINAÇÃO</h2>
-<label><span><input type="checkbox" value="7500" onchange="calc()">Farol</span><span>R$ 7.500</span></label>
-<label><span><input type="checkbox" value="2500" onchange="calc()">Neon</span><span>R$ 2.500</span></label>
-</div>
-
-<div class="box">
-<h2>ESTÉTICA</h2>
-<label><span><input type="checkbox" value="75000" onchange="calc()">Decal</span><span>R$ 7.500</span></label>
-<label><span><input type="checkbox" value="15000" onchange="calc()">Rodas</span><span>R$ 7.500</span></label>
-</div>
-
-<div class="box">
-<h2>PINTURA</h2>
-<label><span><input type="checkbox" value="8000" onchange="calc()">Cromado</span><span>R$ 8.000</span></label>
-<label><span><input type="checkbox" value="4000" onchange="calc()">Fosca</span><span>R$ 4.000</span></label>
-<label><span><input type="checkbox" value="4000" onchange="calc()">Metálica</span><span>R$ 4.000</span></label>
-<label><span><input type="checkbox" value="4000" onchange="calc()">Metal</span><span>R$ 4.000</span></label>
-</div>
-
-</div>
-
-<script>
-function calc(){
-    let total = 0;
-    let itens = 0;
-    let fullTotal = 0;
-
-    document.querySelectorAll("input[type=checkbox]").forEach(el=>{
-        if(el.checked && el.id !== "parceria"){
-            let v = parseFloat(el.value || 0);
-            total += v;
-            itens++;
-            if(el.classList.contains("full")){
-                fullTotal += v;
-            }
-        }
-    });
-
-    let parceria = document.getElementById("parceria");
-    let info = document.getElementById("infoParceria");
-
-    if(parceria.checked && fullTotal > 0){
-        let desconto = fullTotal * 0.20;
-        total -= desconto;
-        info.innerText = "Parceria aplicada (-20% Full Tuning)";
-    }else{
-        info.innerText = "";
-    }
-
-    document.getElementById("total").innerText =
-        "R$ " + total.toLocaleString("pt-BR");
-    document.getElementById("itens").innerText = itens;
-}
-
-function limpar(){
-    document.querySelectorAll("input[type=checkbox]").forEach(c=>c.checked=false);
-    document.getElementById("total").innerText="R$ 0,00";
-    document.getElementById("itens").innerText="0";
-    document.getElementById("infoParceria").innerText="";
-}
-</script>
 let ranking = {}
 
 function gerarOS(){
@@ -284,9 +188,9 @@ mostrarRanking()
 }
 
 function copiarDiscord(){
-liente = document.getElementById("cliente").value
-let vei
-let cculo = document.getElementById("veiculo").value
+
+let cliente = document.getElementById("cliente").value
+let veiculo = document.getElementById("veiculo").value
 let total = document.getElementById("total").innerText
 
 let texto = `📋 ORÇAMENTO MECÂNICA TOUR
@@ -315,74 +219,3 @@ area.innerHTML += m + " - " + ranking[m] + " serviços<br>"
 }
 
 }
-</body>
-
-</html><script>
-function calc(){
-
-let total = 0;
-let itens = 0;
-let fullTotal = 0;
-
-document.querySelectorAll("input[type=checkbox]").forEach(el=>{
-if(el.checked && el.id!=="ativarDesconto" && el.id!=="parceria"){
-let v=parseFloat(el.value||0);
-total+=v;
-itens++;
-
-if(el.classList.contains("full")){
-fullTotal+=v;
-}
-}
-});
-
-let parceria = document.getElementById("parceria").checked;
-let descontoAtivo = document.getElementById("ativarDesconto").checked;
-let porcentagem = parseFloat(document.getElementById("porcentagem").value || 0);
-let info = document.getElementById("infoParceria");
-
-/* PRIORIDADE PARCERIA */
-if(parceria && fullTotal>0){
-
-let desconto = fullTotal * 0.20;
-total -= desconto;
-info.innerText = "Parceria aplicada (-20% Full Tuning)";
-
-}
-
-/* DESCONTO PERSONALIZADO */
-else if(descontoAtivo && porcentagem>0){
-
-let desconto = total * (porcentagem/100);
-total -= desconto;
-info.innerText = `Desconto aplicado (-${porcentagem}%)`;
-
-}
-
-else{
-info.innerText="";
-}
-
-document.getElementById("total").innerText =
-"R$ " + total.toLocaleString("pt-BR");
-
-document.getElementById("itens").innerText = itens;
-}
-
-function limpar(){
-document.querySelectorAll("input[type=checkbox]").forEach(c=>c.checked=false);
-document.getElementById("total").innerText="R$ 0,00";
-document.getElementById("itens").innerText="0";
-document.getElementById("infoParceria").innerText="";
-}
-</script>
-
-<div class="box">
-<h2>Histórico de OS</h2>
-<div id="historico"></div>
-</div>
-
-<div class="box">
-<h2>Ranking Mecânicos</h2>
-<div id="ranking"></div>
-</div>
