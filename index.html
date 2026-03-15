@@ -291,4 +291,240 @@ document.getElementById("infoParceria").innerText="";
 </script>
 
 
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mecânica Tour Customs</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+font-family:'Orbitron',sans-serif;
+background:#0b0b0b;
+color:white;
+margin:0;
+}
+
+header{
+background:#111;
+padding:15px;
+text-align:center;
+font-size:24px;
+color:#00ff9c;
+font-weight:bold;
+}
+
+.container{
+max-width:1000px;
+margin:auto;
+padding:15px;
+}
+
+.box{
+background:#151515;
+border-radius:10px;
+padding:15px;
+margin-bottom:15px;
+}
+
+input,select{
+width:100%;
+padding:10px;
+margin:5px 0;
+background:#111;
+border:1px solid #00ff9c;
+color:white;
+border-radius:5px;
+}
+
+label{
+display:flex;
+justify-content:space-between;
+margin:6px 0;
+}
+
+button{
+width:100%;
+padding:12px;
+margin-top:10px;
+border:none;
+background:#00ff9c;
+font-weight:bold;
+cursor:pointer;
+border-radius:6px;
+}
+
+.total{
+font-size:22px;
+color:#00ff9c;
+text-align:center;
+margin-top:10px;
+}
+
+.alerta{
+background:#ff2e2e;
+padding:10px;
+text-align:center;
+display:none;
+margin:10px;
+border-radius:5px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>MECÂNICA TOUR CUSTOMS</header>
+<div id="alerta" class="alerta"></div>
+
+<div class="container">
+
+<!-- DADOS CLIENTE -->
+<div class="box">
+
+<input id="cliente" placeholder="Nome do Cliente">
+<input id="veiculo" placeholder="Veículo">
+
+<select id="mecanico">
+<option value="">Selecionar Mecânico</option>
+<option>João</option>
+<option>Carlos</option>
+<option>Pedro</option>
+</select>
+
+</div>
+
+<!-- CALCULADORA -->
+<div class="box">
+
+<hr>
+
+<label>
+<span>
+<input type="checkbox" id="ativarDesconto" onchange="calc()"> Desconto
+</span>
+
+<input type="number" id="porcentagem" value="10" oninput="calc()" style="width:80px">
+</label>
+
+<label>
+<span><input type="checkbox" id="parceria" onchange="calc()"> Parceria (-20%)</span>
+</label>
+
+<div class="total" id="total">TOTAL: R$ 0</div>
+
+<button onclick="gerarOS()">GERAR OS</button>
+<button onclick="copiar()">COPIAR ORÇAMENTO</button>
+
+</div>
+
+<!-- HISTORICO -->
+<div class="box">
+<h3>Histórico OS</h3>
+<div id="historico"></div>
+</div>
+
+<!-- RANKING -->
+<div class="box">
+<h3>Ranking Mecânicos</h3>
+<div id="ranking"></div>
+</div>
+
+</div>
+
+<script>
+
+let ranking={}
+let valorAtual=0
+
+function erro(msg){
+let a=document.getElementById("alerta")
+a.innerText=msg
+a.style.display="block"
+setTimeout(()=>a.style.display="none",2500)
+}
+
+function calc(){
+
+let total=0
+
+document.querySelectorAll("input[type=checkbox]").forEach(el=>{
+if(el.checked && el.id!=="ativarDesconto" && el.id!=="parceria"){
+total+=parseFloat(el.value||0)
+}
+})
+
+if(document.getElementById("parceria").checked){
+total -= total*0.20
+}
+
+if(document.getElementById("ativarDesconto").checked){
+let p=document.getElementById("porcentagem").value||0
+total -= total*(p/100)
+}
+
+valorAtual=total
+
+document.getElementById("total").innerText=
+"TOTAL: R$ "+total.toLocaleString("pt-BR")
+}
+
+function gerarOS(){
+
+let cliente=document.getElementById("cliente").value
+let veiculo=document.getElementById("veiculo").value
+let mecanico=document.getElementById("mecanico").value
+
+if(!cliente) return erro("Digite o cliente")
+if(!veiculo) return erro("Digite o veículo")
+if(!mecanico) return erro("Selecione o mecânico")
+if(valorAtual<=0) return erro("Calcule primeiro")
+
+let os=`
+Cliente: ${cliente}<br>
+Veículo: ${veiculo}<br>
+Mecânico: ${mecanico}<br>
+Valor: R$ ${valorAtual.toLocaleString("pt-BR")}<hr>
+`
+
+document.getElementById("historico").innerHTML+=os
+
+if(!ranking[mecanico]) ranking[mecanico]=0
+ranking[mecanico]++
+
+mostrarRanking()
+
+erro("✅ OS criada com sucesso!")
+}
+
+function copiar(){
+
+if(valorAtual<=0) return erro("Nada para copiar")
+
+navigator.clipboard.writeText(
+`Orçamento Mecânica Tour - R$ ${valorAtual}`
+)
+
+erro("📋 Copiado para Discord!")
+}
+
+function mostrarRanking(){
+
+let area=document.getElementById("ranking")
+area.innerHTML=""
+
+for(let m in ranking){
+area.innerHTML+=`${m} - ${ranking[m]} serviços<br>`
+}
+}
+
+</script>
+
+</body>
+</html>
 
