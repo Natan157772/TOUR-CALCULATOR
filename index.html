@@ -289,6 +289,21 @@ document.getElementById("itens").innerText="0";
 document.getElementById("infoParceria").innerText="";
 }
 </script>
+<button onclick="gerarOS()">Gerar OS</button>
+function gerarOS(){
 
+let cliente = document.getElementById("cliente").value
+let veiculo = document.getElementById("veiculo").value
+let total = document.getElementById("total").innerText
+
+let os =
+"📄 ORDEM DE SERVIÇO\n\n"+
+"Cliente: "+cliente+"\n"+
+"Veículo: "+veiculo+"\n"+
+"Valor: "+total
+
+alert(os)
+
+}
 
 
