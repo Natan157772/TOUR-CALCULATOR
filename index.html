@@ -327,7 +327,7 @@ location.reload()
 
 let historico=JSON.parse(localStorage.getItem("historico"))||[]
 
-const WEBHOOK="//discord.com/api/webhooks/1482806727991623771/dOor1_q1CaregAJ9olakRPfdxgVgrApHxWukDsy0Kuf3-tS_y1z83bc18Hm5EmZtbkiK";"
+const WEBHOOK = "https://discord.com/api/webhooks/1482806727991623771/dOor1_q1CaregAJ9olakRPfdxgVgrApHxWukDsy0Kuf3-tS_y1z83bc18Hm5EmZtbkiK";
 
 function calc(){
 
@@ -418,7 +418,7 @@ alert("Preencha nome e veículo!")
 return
 }
 
-let os=
+let os =
 "📄 ORDEM DE SERVIÇO - TOUR CUSTOMS\n\n"+
 "👤 Cliente: "+cliente+"\n"+
 "🚗 Veículo: "+veiculo+"\n"+
@@ -428,24 +428,25 @@ salvarHistorico(os)
 
 fetch(WEBHOOK,{
 method:"POST",
-headers:{"Content-Type":"application/json"},
-body:JSON.stringify({content:os})
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
+content: os
+})
+})
+.then(res=>{
+if(res.ok){
+alert("✅ OS enviada para o Discord!")
+}else{
+alert("❌ Webhook inválido")
+}
+})
+.catch(()=>{
+alert("❌ Erro de conexão")
 })
 
-alert("OS enviada!")
-
 }
-
-function salvarHistorico(texto){
-
-historico.push(texto)
-
-localStorage.setItem("historico",JSON.stringify(historico))
-
-mostrarHistorico()
-
-}
-
 function mostrarHistorico(){
 
 let area=document.getElementById("historico")
