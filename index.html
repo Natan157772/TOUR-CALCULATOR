@@ -255,7 +255,8 @@ oninput="calc()">
 <script>
 
 let historico = JSON.parse(localStorage.getItem("historico")) || []
-
+// 🔥 WEBHOOK DISCORD
+const WEBHOOK = "https://discord.com/api/webhooks/1482806727991623771/dOor1_q1CaregAJ9olakRPfdxgVgrApHxWukDsy0Kuf3-tS_y1z83bc18Hm5EmZtbkiK";
 
 function calc(){
 
@@ -346,6 +347,41 @@ alert("Orçamento copiado!")
 
 function gerarOS(){
 
+let cliente = document.getElementById("cliente").value
+let veiculo = document.getElementById("veiculo").value
+let total = document.getElementById("total").innerText
+
+let os =
+"📄 **ORDEM DE SERVIÇO - TOUR CUSTOMS**\n\n"+
+"👤 Cliente: "+cliente+"\n"+
+"🚗 Veículo: "+veiculo+"\n"+
+"💰 Valor: "+total
+
+// salva histórico
+salvarHistorico(os)
+
+// 🔥 ENVIA PARA DISCORD
+fetch(WEBHOOK,{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body: JSON.stringify({
+content: os
+})
+})
+.then(()=>{
+
+alert("✅ OS enviada para o Discord!")
+
+})
+.catch(()=>{
+
+alert("❌ Erro ao enviar para Discord")
+
+})
+
+}
 let cliente = document.getElementById("cliente").value
 let veiculo = document.getElementById("veiculo").value
 let total = document.getElementById("total").innerText
