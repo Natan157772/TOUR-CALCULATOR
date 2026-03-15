@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
 
 <meta charset="UTF-8">
@@ -16,15 +15,11 @@
 
 body{
 font-family:'Orbitron', sans-serif;
-
-background:
-linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)),
+background:linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)),
 url("https://images.unsplash.com/photo-1503376780353-7e6692767b70");
-
 background-size:cover;
 background-position:center;
 background-attachment:fixed;
-
 color:white;
 padding:15px;
 }
@@ -115,34 +110,15 @@ margin-top:5px;
 }
 
 </style>
-
 </head>
 
 <body>
 
 <!-- LOGIN -->
 
-<div id="loginTela" style="
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:#000;
-display:flex;
-align-items:center;
-justify-content:center;
-z-index:9999;
-">
+<div id="loginTela" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#000;display:flex;align-items:center;justify-content:center;z-index:9999;">
 
-<div style="
-background:#161616;
-padding:30px;
-border-radius:10px;
-width:300px;
-text-align:center;
-border:1px solid #333;
-">
+<div style="background:#161616;padding:30px;border-radius:10px;width:300px;text-align:center;border:1px solid #333;">
 
 <h2 style="color:#ff0000;margin-bottom:20px;">LOGIN MECÂNICA</h2>
 
@@ -156,30 +132,21 @@ border:1px solid #333;
 </div>
 </div>
 
-
 <div class="container" id="site" style="display:none;">
 
 <div class="logo">TOUR CUSTOMS</div>
 <div class="sub">Calculadora Oficial de Modificações</div>
 
-
 <div class="box">
-
 <h2>CLIENTE</h2>
-
 <input id="cliente" placeholder="Nome do Cliente">
 <input id="veiculo" placeholder="Veículo">
-
 </div>
 
-
 <div class="box resultado">
-
 <div>Total:</div>
 <div class="total" id="total">R$ 0,00</div>
-
 <div>Itens: <span id="itens">0</span></div>
-
 <div class="parceria" id="infoParceria"></div>
 
 <button onclick="limpar()">Limpar Tudo</button>
@@ -188,82 +155,6 @@ border:1px solid #333;
 
 </div>
 
-
-<div class="box">
-
-<h2>DESCONTO</h2>
-
-<label>
-
-<span>
-<input type="checkbox" id="ativarDesconto" onchange="calc()">
-Aplicar desconto
-</span>
-
-<span>
-<input type="number"
-id="porcentagem"
-value="10"
-min="0"
-max="100"
-style="width:60px;text-align:center;"
-oninput="calc()">
-%
-</span>
-
-</label>
-
-</div>
-
-
-<div class="box">
-
-<h2>FULL TUNING</h2>
-
-<label><span><input type="checkbox" class="full" value="75000" onchange="calc()">Carro sem blindagem</span><span>R$ 75.000</span></label>
-<label><span><input type="checkbox" class="full" value="150000" onchange="calc()">Carro com blindagem</span><span>R$ 150.000</span></label>
-<label><span><input type="checkbox" class="full" value="60000" onchange="calc()">Moto sem blindagem</span><span>R$ 60.000</span></label>
-<label><span><input type="checkbox" class="full" value="95000" onchange="calc()">Moto com blindagem</span><span>R$ 95.000</span></label>
-
-<label><span><input type="checkbox" value="2500" onchange="calc()">Kit reparo</span><span>R$ 2.500</span></label>
-<label><span><input type="checkbox" value="4500" onchange="calc()">Suspensão a ar</span><span>R$ 4.500</span></label>
-<label><span><input type="checkbox" value="2500" onchange="calc()">Nitro</span><span>R$ 2.500</span></label>
-
-<label><span><input type="checkbox" id="parceria" onchange="calc()">Aplicar Parceria (20% OFF Full)</span><span style="color:#00ff88;">DESCONTO</span></label>
-
-</div>
-
-
-<div class="box">
-<h2>EXTERIOR</h2>
-
-<label><span><input type="checkbox" value="7500" onchange="calc()">Aerofólio</span><span>R$ 7.500</span></label>
-<label><span><input type="checkbox" value="6000" onchange="calc()">Parachoque Dianteiro</span><span>R$ 6.000</span></label>
-<label><span><input type="checkbox" value="6000" onchange="calc()">Parachoque Traseiro</span><span>R$ 6.000</span></label>
-<label><span><input type="checkbox" value="5000" onchange="calc()">Saia</span><span>R$ 5.000</span></label>
-<label><span><input type="checkbox" value="4500" onchange="calc()">Escapamento</span><span>R$ 4.500</span></label>
-
-<label><span><input type="checkbox" value="5500" onchange="calc()">Chassi</span><span>R$ 5.500</span></label>
-<label><span><input type="checkbox" value="4000" onchange="calc()">Grelha</span><span>R$ 4.000</span></label>
-<label><span><input type="checkbox" value="6500" onchange="calc()">Capô</span><span>R$ 6.500</span></label>
-<label><span><input type="checkbox" value="4500" onchange="calc()">Para-lama</span><span>R$ 4.500</span></label>
-<label><span><input type="checkbox" value="7000" onchange="calc()">Teto</span><span>R$ 7.000</span></label>
-<label><span><input type="checkbox" value="3000" onchange="calc()">Placa</span><span>R$ 3.000</span></label>
-
-</div>
-
-
-<div class="box">
-<h2>INTERIOR</h2>
-
-<label><span><input type="checkbox" value="2500" onchange="calc()">Buzina</span><span>R$ 2.500</span></label>
-<label><span><input type="checkbox" value="9000" onchange="calc()">Blindagem</span><span>R$ 9.000</span></label>
-<label><span><input type="checkbox" value="6000" onchange="calc()">Interior</span><span>R$ 6.000</span></label>
-<label><span><input type="checkbox" value="3500" onchange="calc()">Vidro</span><span>R$ 3.500</span></label>
-
-</div>
-
-
 <div class="box">
 <h2>HISTÓRICO</h2>
 <div id="historico"></div>
@@ -271,95 +162,12 @@ oninput="calc()">
 
 </div>
 
-
 <script>
 
 let historico = JSON.parse(localStorage.getItem("historico")) || []
 
-const WEBHOOK = "COLOQUE_SEU_WEBHOOK_AQUI"
+const WEBHOOK = "COLE_SEU_WEBHOOK_AQUI"
 
-function calc(){
-
-let total = 0
-let itens = 0
-let fullTotal = 0
-
-document.querySelectorAll("input[type=checkbox]").forEach(el=>{
-
-if(el.checked && el.id!=="ativarDesconto" && el.id!=="parceria"){
-
-let v=parseFloat(el.value||0)
-
-total+=v
-itens++
-
-if(el.classList.contains("full")){
-fullTotal+=v
-}
-
-}
-
-})
-
-let parceria = document.getElementById("parceria").checked
-let descontoAtivo = document.getElementById("ativarDesconto").checked
-let porcentagem = parseFloat(document.getElementById("porcentagem").value || 0)
-
-let info = document.getElementById("infoParceria")
-
-if(parceria && fullTotal>0){
-
-let desconto = fullTotal * 0.20
-total -= desconto
-info.innerText = "Parceria aplicada (-20% Full Tuning)"
-
-}
-
-else if(descontoAtivo && porcentagem>0){
-
-let desconto = total * (porcentagem/100)
-total -= desconto
-info.innerText = `Desconto aplicado (-${porcentagem}%)`
-
-}
-
-else{
-info.innerText=""
-}
-
-document.getElementById("total").innerText =
-"R$ " + total.toLocaleString("pt-BR")
-
-document.getElementById("itens").innerText = itens
-
-}
-
-function limpar(){
-
-document.querySelectorAll("input[type=checkbox]").forEach(c=>c.checked=false)
-
-document.getElementById("total").innerText="R$ 0,00"
-document.getElementById("itens").innerText="0"
-document.getElementById("infoParceria").innerText=""
-
-}
-
-function copiarOrcamento(){
-
-let total = document.getElementById("total").innerText
-let itens = document.getElementById("itens").innerText
-
-let texto =
-"🔧 TOUR CUSTOMS\n\n"+
-"Itens: "+itens+"\n"+
-"Total: "+total
-
-navigator.clipboard.writeText(texto)
-
-alert("Orçamento copiado!")
-
-}
-const WEBHOOK = "https://discord.com/api/webhooks/1482806727991623771/dOor1_q1CaregAJ9olakRPfdxgVgrApHxWukDsy0Kuf3-tS_y1z83bc18Hm5EmZtbkiK"
 function gerarOS(){
 
 let cliente = document.getElementById("cliente").value
@@ -379,7 +187,6 @@ let os =
 
 salvarHistorico(os)
 
-// ENVIA PARA DISCORD
 fetch(WEBHOOK,{
 method:"POST",
 headers:{
@@ -396,13 +203,9 @@ alert("✅ OS enviada para o Discord!")
 alert("❌ Erro ao enviar para o Discord")
 }
 })
-.catch(error=>{
-console.error(error)
+.catch(()=>{
 alert("❌ Falha de conexão com Discord")
 })
-
-}
-salvarHistorico(os)
 
 }
 
@@ -425,6 +228,30 @@ area.innerHTML=""
 historico.forEach(os=>{
 area.innerHTML += "<pre>"+os+"</pre>"
 })
+
+}
+
+function limpar(){
+
+document.getElementById("total").innerText="R$ 0,00"
+document.getElementById("itens").innerText="0"
+document.getElementById("infoParceria").innerText=""
+
+}
+
+function copiarOrcamento(){
+
+let total = document.getElementById("total").innerText
+let itens = document.getElementById("itens").innerText
+
+let texto =
+"🔧 TOUR CUSTOMS\n\n"+
+"Itens: "+itens+"\n"+
+"Total: "+total
+
+navigator.clipboard.writeText(texto)
+
+alert("Orçamento copiado!")
 
 }
 
@@ -462,6 +289,10 @@ document.getElementById("site").style.display="block"
 }
 
 }
+
+window.addEventListener("beforeunload", function () {
+localStorage.removeItem("logado")
+})
 
 </script>
 
