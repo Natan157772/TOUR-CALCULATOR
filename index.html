@@ -305,4 +305,14 @@ caixa += valorNumero
 document.getElementById("caixaTotal").innerText =
 "R$ " + caixa.toLocaleString('pt-BR')
 
-salvarDados()
+salvarDados()<script>
+
+let ranking = JSON.parse(localStorage.getItem("ranking")) || {}
+let historicoOS = JSON.parse(localStorage.getItem("historicoOS")) || []
+let caixa = JSON.parse(localStorage.getItem("caixa")) || 0
+
+function salvarDados(){
+localStorage.setItem("ranking", JSON.stringify(ranking))
+localStorage.setItem("historicoOS", JSON.stringify(historicoOS))
+localStorage.setItem("caixa", JSON.stringify(caixa))
+}
